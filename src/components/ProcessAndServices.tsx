@@ -1,16 +1,16 @@
 "use client";
 
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { SERVICES, WORKFLOW_STEPS } from "@/data/portfolioData";
+import { AnimatePresence, motion } from "framer-motion";
 import {
-  Sparkles,
-  Package,
-  Layers,
-  Presentation,
-  CheckCircle,
   ArrowRight,
+  CheckCircle,
+  Layers,
+  Package,
+  Presentation,
+  Sparkles
 } from "lucide-react";
-import { WORKFLOW_STEPS, SERVICES } from "@/data/portfolioData";
+import { useState } from "react";
 
 export function ProcessAndServices() {
   const [activeStepIndex, setActiveStepIndex] = useState(0);
@@ -31,10 +31,12 @@ export function ProcessAndServices() {
   };
 
   return (
-    <section id="process" className="py-24 sm:py-32 relative overflow-hidden bg-purple-50/40 dark:bg-[#11091A]">
+    <section
+      id="services"
+      className="py-24 sm:py-32 relative overflow-hidden bg-purple-50/40 dark:bg-[#11091A]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* ================= Part 1: Creative Process Timeline ================= */}
-        <div className="mb-28">
+        <section className="mb-28" id="process">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold text-[#0F172A] dark:text-[#F8FAFC]">
               From Raw Ambition to{" "}
@@ -43,7 +45,9 @@ export function ProcessAndServices() {
               </span>
             </h2>
             <p className="mt-4 text-base text-slate-600 dark:text-slate-400">
-              A frictionless, 5-phase strategic sprint ensuring zero scope ambiguity, complete creative alignment, and enterprise-grade outputs.
+              A frictionless, 5-phase strategic sprint ensuring zero scope
+              ambiguity, complete creative alignment, and enterprise-grade
+              outputs.
             </p>
           </div>
 
@@ -57,13 +61,13 @@ export function ProcessAndServices() {
                   activeStepIndex === idx
                     ? "bg-purple-600 text-white border-purple-500 shadow-xl shadow-purple-600/25 scale-[1.02]"
                     : "bg-white dark:bg-[#170F23] text-slate-700 dark:text-slate-300 border-purple-100 dark:border-purple-900/40 hover:border-purple-300"
-                }`}
-              >
+                }`}>
                 <span
                   className={`text-xs font-black tracking-widest block mb-1 ${
-                    activeStepIndex === idx ? "text-purple-200" : "text-purple-600 dark:text-purple-400"
-                  }`}
-                >
+                    activeStepIndex === idx
+                      ? "text-purple-200"
+                      : "text-purple-600 dark:text-purple-400"
+                  }`}>
                   PHASE {step.step}
                 </span>
                 <span className="text-xs sm:text-sm font-heading font-bold block line-clamp-1">
@@ -71,9 +75,10 @@ export function ProcessAndServices() {
                 </span>
                 <span
                   className={`text-[10px] block mt-1 ${
-                    activeStepIndex === idx ? "text-purple-100" : "text-slate-400"
-                  }`}
-                >
+                    activeStepIndex === idx
+                      ? "text-purple-100"
+                      : "text-slate-400"
+                  }`}>
                   {step.duration}
                 </span>
               </button>
@@ -88,8 +93,7 @@ export function ProcessAndServices() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -15 }}
               transition={{ duration: 0.3 }}
-              className="rounded-3xl border border-purple-200 dark:border-[#2E1A47] p-8 sm:p-12 bg-white dark:bg-[#170F23] shadow-xl relative overflow-hidden"
-            >
+              className="rounded-3xl border border-purple-200 dark:border-[#2E1A47] p-8 sm:p-12 bg-white dark:bg-[#170F23] shadow-xl relative overflow-hidden">
               <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8">
                 <div className="max-w-2xl">
                   <div className="flex items-center gap-3 mb-4">
@@ -101,7 +105,8 @@ export function ProcessAndServices() {
                         {WORKFLOW_STEPS[activeStepIndex].phase}
                       </h3>
                       <p className="text-xs font-semibold text-purple-600 dark:text-purple-400">
-                        Typical Timeline: {WORKFLOW_STEPS[activeStepIndex].duration}
+                        Typical Timeline:{" "}
+                        {WORKFLOW_STEPS[activeStepIndex].duration}
                       </p>
                     </div>
                   </div>
@@ -118,7 +123,9 @@ export function ProcessAndServices() {
                   </h4>
                   <ul className="space-y-3">
                     {WORKFLOW_STEPS[activeStepIndex].outputs.map((out, i) => (
-                      <li key={i} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700 dark:text-slate-300 font-medium">
+                      <li
+                        key={i}
+                        className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700 dark:text-slate-300 font-medium">
                         <CheckCircle className="w-4 h-4 text-purple-600 dark:text-purple-400 shrink-0 mt-0.5" />
                         <span>{out}</span>
                       </li>
@@ -128,10 +135,10 @@ export function ProcessAndServices() {
               </div>
             </motion.div>
           </AnimatePresence>
-        </div>
+        </section>
 
         {/* ================= Part 2: Core Services Matrix ================= */}
-        <div id="services">
+        <section id="services">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold text-[#0F172A] dark:text-[#F8FAFC]">
               Core Creative Services &{" "}
@@ -140,7 +147,8 @@ export function ProcessAndServices() {
               </span>
             </h2>
             <p className="mt-4 text-base text-slate-600 dark:text-slate-400">
-              High-value creative firepower designed to elevate brand equity, launch flagship products, and dominate saturated categories.
+              High-value creative firepower designed to elevate brand equity,
+              launch flagship products, and dominate saturated categories.
             </p>
           </div>
 
@@ -155,8 +163,7 @@ export function ProcessAndServices() {
                   viewport={{ once: true, margin: "-40px" }}
                   transition={{ duration: 0.4, delay: index * 0.1 }}
                   whileHover={{ y: -6 }}
-                  className="rounded-3xl border border-purple-100 dark:border-purple-900/40 p-8 sm:p-10 bg-white dark:bg-[#170F23] shadow-lg hover:shadow-2xl hover:shadow-purple-900/10 hover:border-purple-300 dark:hover:border-purple-700/60 transition-all flex flex-col justify-between"
-                >
+                  className="rounded-3xl border border-purple-100 dark:border-purple-900/40 p-8 sm:p-10 bg-white dark:bg-[#170F23] shadow-lg hover:shadow-2xl hover:shadow-purple-900/10 hover:border-purple-300 dark:hover:border-purple-700/60 transition-all flex flex-col justify-between">
                   <div>
                     {/* Icon and Title */}
                     <div className="flex items-center gap-4 mb-4">
@@ -180,7 +187,9 @@ export function ProcessAndServices() {
                     {/* Deliverables Bullet Points with Purple Icons */}
                     <div className="space-y-2.5 mb-8">
                       {srv.deliverables.map((item, i) => (
-                        <div key={i} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+                        <div
+                          key={i}
+                          className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
                           <CheckCircle className="w-4 h-4 text-purple-600 dark:text-purple-400 shrink-0 mt-0.5" />
                           <span>{item}</span>
                         </div>
@@ -195,8 +204,7 @@ export function ProcessAndServices() {
                     </span>
                     <a
                       href="#contact"
-                      className="inline-flex items-center gap-1.5 text-xs font-bold text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300"
-                    >
+                      className="inline-flex items-center gap-1.5 text-xs font-bold text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300">
                       <span>Inquire Now</span>
                       <ArrowRight className="w-3.5 h-3.5" />
                     </a>
@@ -205,7 +213,7 @@ export function ProcessAndServices() {
               );
             })}
           </div>
-        </div>
+        </section>
       </div>
     </section>
   );
